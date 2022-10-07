@@ -4,26 +4,36 @@ using UnityEngine;
 
 //Code built using https://www.toptal.com/unity-unity3d/unity-ai-development-finite-state-machine-tutorial for learning
 
-public class BaseStateMachine : MonoBehaviour
+namespace FSM
 {
-    [SerializeField] private BaseState _initialState;
-
-    private void Awake()
+    public class BaseStateMachine : MonoBehaviour
     {
-        currentState = _initialState;
-    }
+        [SerializeField] private BaseState _initialState;
+        private Dictionary<Types, Component> _cachedComponents;
 
-    public BaseState currentState { get; set; }
+        private void Awake()
+        {
+            currentState = _initialState;
+            _cachedComponents = new Dictionary<Types, Component>();
+        }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentState.Execute(this);
-    }
+        public BaseState currentState { get; set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Start is called before the first frame update
+        void Start()
+        {
+            currentState.Execute(this);
+        }
+
+        public new T GetComponent<T>() where T : Component
+        {
+            
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
