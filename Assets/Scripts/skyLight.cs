@@ -18,8 +18,8 @@ public class skyLight : MonoBehaviour
 
         transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime);
         transform.Translate(0, 0, 3 * Time.deltaTime);*/
-        
-        // -->this.transform.rotation. = Force;
+
+        // -->transform.Rotate(transform.rotation.x + 1, transform.rotation.y, transform.rotation.z);
 
         //transform.LookAt(Target);
         //GetComponent<Rigidbody>().AddRelativeForce(Force);
