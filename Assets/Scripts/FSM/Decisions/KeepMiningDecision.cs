@@ -8,10 +8,10 @@ namespace MyFSM
     [CreateAssetMenu(menuName = "FSM/Decisions/KeepMining")]
     public class KeepMiningDecision : Decision
     {
-        public override bool Decide(BaseStateMachine state)
+        public override bool Decide(BaseStateMachine stateMachine)
         {
             //NOTE: Change if statement to 'if (state.minedGold >= 5 || state.tiredness >= 6) //If the miner has mined 5 or more gold or has reached 6 or more tiredness then...'
-            if (state.minedGold >= 5) //If the miner has mined 5 or more gold then...
+            if (stateMachine.minedGold >= 5) //If the miner has mined 5 or more gold then...
                 return false; //Return false to cease mining
             //Else, if the miner has mined less than 5 gold then...
             return true; //Return true to continue mining

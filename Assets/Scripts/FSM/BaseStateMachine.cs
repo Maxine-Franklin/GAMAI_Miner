@@ -27,10 +27,13 @@ namespace FSM
 
         public BaseState currentState { get; set; }
 
+        float timer = 0.5f;
+
         // Start is called before the first frame update
         void Start()
         {
-            currentState.Execute(this);
+            //currentState.Execute(this);
+            //UpdateAI();
         }
 
         public new T GetComponent<T>() where T : Component //Code to either return cached component
@@ -48,7 +51,25 @@ namespace FSM
         // Update is called once per frame
         void Update()
         {
-            _minedGold.text = "Gold Mined: " + minedGold.ToString();
+            timer -= Time.deltaTime;
+            if(timer<0f)
+            {
+                timer = 0.5f;
+                currentState.Execute(this);
+                _minedGold.text = "Gold Mined: " + minedGold.ToString();
+            }
         }
+
+        /*WaitForSeconds waitForSeconds = new WaitForSeconds(0.5f);
+
+        IEnumerator UpdateAI() //Calls AI execute functions every waitForSeconds seconds (currently 500 milliseconds)
+        {
+            while(true)
+            {
+                currentState.Execute(this);
+                _minedGold.text = "Gold Mined: " + minedGold.ToString();
+                yield return waitForSeconds;
+            }
+        }*/
     }
 }
