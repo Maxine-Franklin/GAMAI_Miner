@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Code built using https://www.toptal.com/unity-unity3d/unity-ai-development-finite-state-machine-tutorial for learning
 
@@ -13,7 +14,8 @@ namespace FSM
         [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents; //Stores cached components to increase effiency of state actions
 
-        [SerializeField] private TextMeshPro _minedGold; //UI element that shows the mined gold value
+        [SerializeField] private TextMeshProUGUI _minedGold; //UI element that shows the mined gold value
+
 
         public int minedGold = 0; //Gold that is yet to be banked
 
@@ -46,7 +48,7 @@ namespace FSM
         // Update is called once per frame
         void Update()
         {
-            _minedGold.text = minedGold.ToString();
+            _minedGold.text = "Gold Mined: " + minedGold.ToString();
         }
     }
 }
