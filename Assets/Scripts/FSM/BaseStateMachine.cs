@@ -14,10 +14,11 @@ namespace FSM
         [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents; //Stores cached components to increase effiency of state actions
 
-        [SerializeField] private TextMeshProUGUI _minedGold; //UI element that shows the mined gold value
+        [SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
 
 
         public int minedGold = 0; //Gold that is yet to be banked
+        public int bankedGold = 0; //Gold that has been banked
 
         private void Awake()
         {
@@ -51,12 +52,13 @@ namespace FSM
         // Update is called once per frame
         void Update()
         {
-            timer -= Time.deltaTime;
-            if(timer<0f)
+            timer -= Time.deltaTime; //Decreases timer value by the time since the last frame
+            if(timer<0f) //If timer value is less than or equal to 0 then...
             {
-                timer = 0.5f;
-                currentState.Execute(this);
-                _minedGold.text = "Gold Mined: " + minedGold.ToString();
+                timer = 0.5f; //Resets FSM execution timer to 500 milliseconds
+                currentState.Execute(this); //Executes current state
+                itemUI[0].text = "Gold Mined: " + minedGold.ToString(); //Updates mined gold UI element
+                itemUI[1].text = "Gold Banked: " + bankedGold.ToString(); //Updates banked gold UI element
             }
         }
 
