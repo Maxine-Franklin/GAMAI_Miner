@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d32d7201d7228384da831a156f585785, type: 3}
-  m_Name: walkPoints
+  m_Name: WalkingToMine
   m_EditorClassIdentifier: 
   Action:
   - {fileID: 11400000, guid: 7725e3904703e9f4a8a9fab4efef90bb, type: 2}
-  Transitions: []
+  Transitions:
+  - {fileID: 11400000, guid: 9be46e7c4d508274783d2a6ea28d02f9, type: 2}

@@ -9,7 +9,7 @@ namespace FSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            stateMachine.minedGold += 1;
+            stateMachine.minedGold += 1; //Increases mined gold by one
         }
     }
 }
