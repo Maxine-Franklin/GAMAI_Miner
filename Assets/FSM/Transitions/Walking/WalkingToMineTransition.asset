@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WalkingToMineTransition
   m_EditorClassIdentifier: 
   Decision: {fileID: 11400000, guid: d6b2bceda2f54ff4480ab41c0771b606, type: 2}
-  trueState: {fileID: 11400000, guid: 94bdd4816ebe9874c9505a92f10fbffc, type: 2}
-  falseState: {fileID: 11400000, guid: 63b8ad8b8c941f44f9a94118b9bd85e7, type: 2}
+  trueState: {fileID: 11400000, guid: 63b8ad8b8c941f44f9a94118b9bd85e7, type: 2}
+  falseState: {fileID: 11400000, guid: 94bdd4816ebe9874c9505a92f10fbffc, type: 2}

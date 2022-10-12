@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WalkingToBankTransition
   m_EditorClassIdentifier: 
   Decision: {fileID: 11400000, guid: d6b2bceda2f54ff4480ab41c0771b606, type: 2}
-  trueState: {fileID: 11400000, guid: e95a25bda95d6634e809a1894b918dd3, type: 2}
-  falseState: {fileID: 11400000, guid: 3d49347ab6ad5724c94b7d75915d0ad1, type: 2}
+  trueState: {fileID: 11400000, guid: 3d49347ab6ad5724c94b7d75915d0ad1, type: 2}
+  falseState: {fileID: 11400000, guid: e95a25bda95d6634e809a1894b918dd3, type: 2}
