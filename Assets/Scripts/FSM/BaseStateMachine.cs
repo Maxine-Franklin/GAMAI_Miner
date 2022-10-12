@@ -19,6 +19,7 @@ namespace FSM
 
         public int minedGold = 0; //Gold that is yet to be banked
         public int bankedGold = 0; //Gold that has been banked
+        public int tiredness = 0; //Miner tiredness level
         public Vector3 destination //Miner destination
         { get; set; }
         /// <summary>
@@ -65,6 +66,7 @@ namespace FSM
                 currentState.Execute(this); //Executes current state
                 itemUI[0].text = "Gold Mined: " + minedGold.ToString(); //Updates mined gold UI element
                 itemUI[1].text = "Gold Banked: " + bankedGold.ToString(); //Updates banked gold UI element
+                itemUI[2].text = "Tiredness: " + tiredness.ToString(); //Updates tiredness UI element
             }
         }
 

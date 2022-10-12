@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace FSM
@@ -10,6 +8,7 @@ namespace FSM
         public override void Execute(BaseStateMachine stateMachine)
         {
             stateMachine.minedGold += 1; //Increases mined gold by one
+            stateMachine.tiredness += 1; //Increases miner tiredness by one
         }
     }
 }
