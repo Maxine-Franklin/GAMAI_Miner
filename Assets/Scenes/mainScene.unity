@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 11156551}
   - component: {fileID: 11156550}
   - component: {fileID: 11156549}
+  - component: {fileID: 11156554}
+  - component: {fileID: 11156553}
   - component: {fileID: 11156548}
   m_Layer: 0
   m_Name: AutoMiner
@@ -251,6 +253,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11156553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11156547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da317587dded8c4409c1d4168fa6634e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialState: {fileID: 0}
+  locations: []
+  _blackboard: {fileID: 11156554}
+--- !u!114 &11156554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11156547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd9924196f0f9e4490622aa8911bce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemUI: []
+  locations: []
+  autoMinedGold: 0
+  autoMineGoldChance: 0
 --- !u!1 &69479978
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,19 +511,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialState: {fileID: 11400000, guid: 63b8ad8b8c941f44f9a94118b9bd85e7, type: 2}
-  itemUI:
-  - {fileID: 193014156}
-  - {fileID: 2084856772}
-  - {fileID: 904615092}
   locations:
   - {fileID: 1799834075}
   - {fileID: 1407831549}
   - {fileID: 1957154018}
   - {fileID: 173564316}
   _blackboard: {fileID: 73859643}
-  minedGold: 0
-  bankedGold: 0
-  tiredness: 0
 --- !u!195 &73859642
 NavMeshAgent:
   m_ObjectHideFlags: 0
