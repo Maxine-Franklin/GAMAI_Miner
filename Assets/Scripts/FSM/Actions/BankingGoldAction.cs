@@ -9,8 +9,11 @@ namespace FSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            stateMachine.minedGold -= 1; //Decreases mined gold by one
-            stateMachine.bankedGold += 1; //Increases 'banks' gold by one
+            //stateMachine.minedGold -= 1; //Decreases mined gold by one
+            //stateMachine.bankedGold += 1; //Increases 'banks' gold by one
+
+            stateMachine._blackboard.IncrementStat(0, -1); //Increases mined gold by one
+            stateMachine._blackboard.IncrementStat(1, 1); //Increases 'banks' gold by one
         }
     }
 }

@@ -20,9 +20,9 @@ namespace FSM
 
         public Blackboard _blackboard;
 
-        public int minedGold = 0; //Gold that is yet to be banked
-        public int bankedGold = 0; //Gold that has been banked
-        public int tiredness = 0; //Miner tiredness level
+        //public int minedGold = 0; //Gold that is yet to be banked
+        //public int bankedGold = 0; //Gold that has been banked
+        //public int tiredness = 0; //Miner tiredness level
         public Vector3 destination //Miner destination
         { get; set; }
         /// <summary>

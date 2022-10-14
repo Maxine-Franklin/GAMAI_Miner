@@ -9,7 +9,8 @@ namespace FSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            stateMachine.minedGold = 999; //Using 999 essentially acts as an error code to represent that the code has reached the end of execution
+            //stateMachine.minedGold = 999; //Using 999 essentially acts as an error code to represent that the code has reached the end of execution
+            stateMachine._blackboard.UpdateStat(0, 999); //Using 999 essentially acts as an error code to represent that the code has reached the end of execution
         }
     }
 }
