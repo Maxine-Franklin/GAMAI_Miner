@@ -15,7 +15,7 @@ namespace FSM
         [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents; //Stores cached components to increase effiency of state actions
 
-        [SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
+        //[SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
         [SerializeField] private List<Transform> locations = new List<Transform>(); //All locations the miner can traval too
 
         public Blackboard _blackboard;

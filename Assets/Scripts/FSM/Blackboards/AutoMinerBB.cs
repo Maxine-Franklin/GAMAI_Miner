@@ -5,15 +5,18 @@ using UnityEngine;
 
 namespace blackboard
 {
-    public class MinerBB : Blackboard
+    public class AutoMinerBB : Blackboard
     {
         //--Could use a void so that data is put in the BSM and the BSM runs the void to set the values of the UI and Locations
         [SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
         [SerializeField] private List<Transform> locations = new List<Transform>(); //All locations the miner can traval too
 
-        [SerializeField] private int minedGold = 0; //Gold that is yet to be banked
-        [SerializeField] private int bankedGold = 0; //Gold that has been banked
-        [SerializeField] private int tiredness = 0; //Miner tiredness level
+        [SerializeField] private int autoMinedGold = 0; //Gold that is yet to be banked
+        /// <summary>
+        /// <br>A value between 0-100</br><br>% chance to mine gold per check</br>
+        /// </summary>
+        [SerializeField] private int autoMineGoldChance = 0; //% chance to mine gold per check
+        //breakdown likelihood stat
 
         private Vector3 destination; //Miner destination
 
@@ -27,17 +30,14 @@ namespace blackboard
         {
             switch (_stat) //Select the stat value to override
             {
-                case 0: //Mined Gold
-                    minedGold = newValue;
+                case 3: //AutoMined Gold
+                    autoMinedGold = newValue;
                     break;
-                case 1: //Banked Gold
-                    bankedGold = newValue;
-                    break;
-                case 2: //Tiredness
-                    tiredness = newValue;
+                case 4: //AutoMine Gold Chance
+                    autoMineGoldChance = newValue;
                     break;
                 default: //Error Case
-                    Debug.Log("Incorrect stat update in MinerBB, value requested: " + _stat);
+                    Debug.Log("Incorrect stat update in AutoMinerBB, value requested: " + _stat);
                     break;
             }
             return; //Returns to caller
@@ -47,17 +47,14 @@ namespace blackboard
         {
             switch (_stat) //Select the stat value to increment
             {
-                case 0: //Mined Gold
-                    minedGold += incrementValue;
+                case 3: //AutoMined Gold
+                    autoMinedGold += incrementValue;
                     break;
-                case 1: //Banked Gold
-                    bankedGold += incrementValue;
-                    break;
-                case 2: //Tiredness
-                    tiredness += incrementValue;
+                case 4: //AutoMine Gold Chance
+                    autoMineGoldChance += incrementValue;
                     break;
                 default: //Error Case
-                    Debug.Log("Incorrect stat update in MinerBB, value requested: " + _stat);
+                    Debug.Log("Incorrect stat update in AutoMinerBB, value requested: " + _stat);
                     break;
             }
             return; //Returns to caller
@@ -67,14 +64,12 @@ namespace blackboard
         {
             switch (_stat) //Select the stat value to return to the caller
             {
-                case 0: //Mined Gold
-                    return minedGold;
-                case 1: //Banked Gold
-                    return bankedGold;
-                case 2: //Tiredness
-                    return tiredness;
+                case 3: //AutoMined Gold
+                    return autoMinedGold;
+                case 4: //AutoMine Gold Chance
+                    return autoMineGoldChance;
                 default: //Error Case
-                    Debug.Log("Incorrect stat request in MinerBB, value requested: " + _stat);
+                    Debug.Log("Incorrect stat request in AutoMinerBB, value requested: " + _stat);
                     break;
             }
             return 999; //Error value to represent an incorrect _stat value
@@ -83,9 +78,7 @@ namespace blackboard
         // Update is called once per frame
         void Update()
         {
-            itemUI[0].text = "Gold Mined: " + minedGold.ToString(); //Updates mined gold UI element
-            itemUI[1].text = "Gold Banked: " + bankedGold.ToString(); //Updates banked gold UI element
-            itemUI[2].text = "Tiredness: " + tiredness.ToString(); //Updates tiredness UI element
+            itemUI[0].text = "AutoMiner Gold Stored: " + autoMinedGold.ToString(); //Updates mined gold UI element
         }
     }
 }
