@@ -8,7 +8,8 @@ namespace MyFSM
     {
         public override bool Decide(BaseStateMachine stateMachine)
         {
-            if (stateMachine.minedGold <= 0) //If the miner has banked all mined gold then...
+            //if (stateMachine.minedGold <= 0) //If the miner has banked all mined gold then...
+            if (stateMachine._blackboard.GetStat(0) <= 0) //If the miner has banked all mined gold then...
             {
                 stateMachine.UpdateDestination(0); //Updates miner destination to the mine
                 return false; //Return false to cease banking

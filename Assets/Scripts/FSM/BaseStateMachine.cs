@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using blackboard;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +18,11 @@ namespace FSM
         [SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
         [SerializeField] private List<Transform> locations = new List<Transform>(); //All locations the miner can traval too
 
-        public int minedGold = 0; //Gold that is yet to be banked
-        public int bankedGold = 0; //Gold that has been banked
-        public int tiredness = 0; //Miner tiredness level
+        public Blackboard _blackboard;
+
+        //public int minedGold = 0; //Gold that is yet to be banked
+        //public int bankedGold = 0; //Gold that has been banked
+        //public int tiredness = 0; //Miner tiredness level
         public Vector3 destination //Miner destination
         { get; set; }
         /// <summary>
@@ -64,9 +67,9 @@ namespace FSM
             {
                 timer = 0.5f; //Resets FSM execution timer to 500 milliseconds
                 currentState.Execute(this); //Executes current state
-                itemUI[0].text = "Gold Mined: " + minedGold.ToString(); //Updates mined gold UI element
-                itemUI[1].text = "Gold Banked: " + bankedGold.ToString(); //Updates banked gold UI element
-                itemUI[2].text = "Tiredness: " + tiredness.ToString(); //Updates tiredness UI element
+                //itemUI[0].text = "Gold Mined: " + minedGold.ToString(); //Updates mined gold UI element
+                //itemUI[1].text = "Gold Banked: " + bankedGold.ToString(); //Updates banked gold UI element
+                //itemUI[2].text = "Tiredness: " + tiredness.ToString(); //Updates tiredness UI element
             }
         }
 
