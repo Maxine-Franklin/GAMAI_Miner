@@ -14,7 +14,7 @@ namespace MyFSM
             //if (stateMachine.tiredness >= 7) //If the miner has a tiredness level greater than or equal to 8 then...
             if (stateMachine._blackboard.GetStat(2) >= 7) //If the miner has a tiredness level greater than or equal to 8 then...
             {
-                stateMachine.UpdateDestination(2); //Updates miner destination to the home
+                stateMachine._blackboard.UpdateDestination(2); //Updates miner destination to the home
                 return true; //Return false to cease mining
             }
             //Else, if the miner has still has energy then..

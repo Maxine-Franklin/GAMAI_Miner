@@ -23,13 +23,13 @@ namespace FSM
         //public int minedGold = 0; //Gold that is yet to be banked
         //public int bankedGold = 0; //Gold that has been banked
         //public int tiredness = 0; //Miner tiredness level
-        public Vector3 destination //Miner destination
-        { get; set; }
+        //public Vector3 destination //Miner destination
+        //{ get; set; }
         /// <summary>
         /// Updates the destination of the miner (used by navAgent)
         /// </summary>
         /// <param name="newDestination"><br>0: Mine</br><br>1: Bank</br><br>2: Home</br><br>3: Store</br></param>
-        public void UpdateDestination(int newDestination) { destination = locations[newDestination].position; return; }
+        //public void UpdateDestination(int newDestination) { destination = locations[newDestination].position; return; }
 
         private void Awake()
         {
@@ -44,7 +44,8 @@ namespace FSM
         // Start is called before the first frame update
         void Start()
         {
-            destination = locations[0].position; //Set's default destination to the mine
+            //destination = locations[0].position; //Set's default destination to the mine
+            _blackboard.UpdateDestination(0); //Set's default destination to the mine
         }
 
         public new T GetComponent<T>() where T : Component //Code to either return cached component

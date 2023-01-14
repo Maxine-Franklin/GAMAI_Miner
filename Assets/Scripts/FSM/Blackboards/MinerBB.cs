@@ -80,6 +80,14 @@ namespace blackboard
             return 999; //Error value to represent an incorrect _stat value
         }
 
+        public override void UpdateDestination(int newDestination)
+        { destination = locations[newDestination].position; return; }
+
+        public override Vector3 GetDestination()
+        {
+            return destination;
+        }
+
         // Update is called once per frame
         void Update()
         {

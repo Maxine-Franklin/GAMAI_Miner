@@ -18,7 +18,7 @@ namespace MyFSM
 
             var navMeshAgent = stateMachine.GetComponent<NavMeshAgent>(); //Obtains miner navMeshAgent
             if (!navMeshAgent.hasPath) //If the agent does not have a destination then...
-                navMeshAgent.SetDestination(stateMachine.destination); //Set's miner agent destination to stored destination
+                navMeshAgent.SetDestination(stateMachine._blackboard.GetDestination()); //Set's miner agent destination to stored destination
 
             //Add Actual Walking Code
 

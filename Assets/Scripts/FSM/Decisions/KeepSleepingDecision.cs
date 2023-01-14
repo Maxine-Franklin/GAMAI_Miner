@@ -14,7 +14,7 @@ namespace MyFSM
                 //stateMachine.tiredness = 0; //Prevents tiredness becomming a negative value
                 stateMachine._blackboard.UpdateStat(2, 0); //Prevents tiredness becomming a negative value
                 //if (stateMachine.minedGold < 5) //If mined gold is less than 5...
-                    stateMachine.UpdateDestination(0); //Set's agent destination to the mine
+                    stateMachine._blackboard.UpdateDestination(0); //Set's agent destination to the mine
                 //else //If mined gold is greater than or equal to 5...
                     //stateMachine.UpdateDestination(1); //Set's agent destination to the bank
                 return false; //Return false to cease sleeping

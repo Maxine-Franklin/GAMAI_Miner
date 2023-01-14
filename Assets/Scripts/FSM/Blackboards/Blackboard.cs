@@ -38,6 +38,10 @@ namespace blackboard
         /// <returns><br>The integer value of a stat</br><br>If value is 999, an error has occured</br></returns>
         public virtual int GetStat(int _stat) { return 999; }
 
+        /// <summary>
+        /// Updates the destination of the miner (used by navAgent)
+        /// </summary>
+        /// <param name="newDestination"><br>0: Mine</br><br>1: Bank</br><br>2: Home</br><br>3: Store</br></param>
         public virtual void UpdateDestination(int newDestination) { }
 
         public virtual Vector3 GetDestination() { return new Vector3(0, 0, 0); }
