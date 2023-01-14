@@ -13,6 +13,8 @@ namespace FSM
 
             stateMachine._blackboard.IncrementStat(0, 1); //Increases mined gold by one
             stateMachine._blackboard.IncrementStat(2, 1); //Increases miner tiredness by one
+
+            
         }
     }
 }

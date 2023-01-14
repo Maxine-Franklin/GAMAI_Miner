@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace blackboard
@@ -14,6 +15,13 @@ namespace blackboard
         [SerializeField] private int minedGold = 0; //Gold that is yet to be banked
         [SerializeField] private int bankedGold = 0; //Gold that has been banked
         [SerializeField] private int tiredness = 0; //Miner tiredness level
+
+        private bool overworked = false; //Tracks if miner has become overworked
+
+        private int bankingDesire = 0; //Desire to go to the bank and store mined gold
+        private int sleepDesire = 0; //Desire to go home and restore tiredness (costs rent)
+
+        [SerializeField] int rent = 4; //{Temporary Location} Cost to sleep at home
 
         private Vector3 destination; //Miner destination
 
@@ -36,6 +44,18 @@ namespace blackboard
                 case 2: //Tiredness
                     tiredness = newValue;
                     break;
+                case 3: //Banking Desire
+                    bankingDesire = newValue;
+                    break;
+                case 4: //Sleeping Desire
+                    sleepDesire = newValue;
+                    break;
+                case 6: //Overworked
+                    if (newValue == 1)
+                        overworked = true;
+                    else
+                        overworked = false;
+                    break;
                 default: //Error Case
                     Debug.Log("Incorrect stat update in MinerBB, value requested: " + _stat);
                     break;
@@ -56,6 +76,12 @@ namespace blackboard
                 case 2: //Tiredness
                     tiredness += incrementValue;
                     break;
+                case 3: //Banking Desire
+                    bankingDesire = incrementValue;
+                    break;
+                case 4: //Sleeping Desire
+                    sleepDesire = incrementValue;
+                    break;
                 default: //Error Case
                     Debug.Log("Incorrect stat update in MinerBB, value requested: " + _stat);
                     break;
@@ -73,6 +99,12 @@ namespace blackboard
                     return bankedGold;
                 case 2: //Tiredness
                     return tiredness;
+                case 3: //Banking Desire
+                    return bankingDesire;
+                case 4: //Sleeping Desire
+                    return sleepDesire;
+                case 5: //Rent
+                    return rent;
                 default: //Error Case
                     Debug.Log("Incorrect stat request in MinerBB, value requested: " + _stat);
                     break;
@@ -94,6 +126,9 @@ namespace blackboard
             itemUI[0].text = "Gold Mined: " + minedGold.ToString(); //Updates mined gold UI element
             itemUI[1].text = "Gold Banked: " + bankedGold.ToString(); //Updates banked gold UI element
             itemUI[2].text = "Tiredness: " + tiredness.ToString(); //Updates tiredness UI element
+            itemUI[3].text = "Banking Desire: " + bankingDesire.ToString(); //Updates banking desire UI element
+            itemUI[4].text = "Sleeping Desire: " + sleepDesire.ToString(); //Updates sleeping desire UI element
+            itemUI[5].enabled = overworked; //Enables overworked UI element visibility if miner is overworked
         }
     }
 }
