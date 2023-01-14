@@ -22,6 +22,7 @@ namespace blackboard
         private int sleepDesire = 0; //Desire to go home and restore tiredness (costs rent)
 
         [SerializeField] int rent = 4; //{Temporary Location} Cost to sleep at home
+        private int rentPayed = 0; //Tracks if rent has been payed to stop duplicate payments
 
         private Vector3 destination; //Miner destination
 
@@ -50,11 +51,14 @@ namespace blackboard
                 case 4: //Sleeping Desire
                     sleepDesire = newValue;
                     break;
-                case 6: //Overworked
+                case 5: //Overworked
                     if (newValue == 1)
                         overworked = true;
                     else
                         overworked = false;
+                    break;
+                case 6: //Rent Payed
+                    rentPayed = newValue;
                     break;
                 default: //Error Case
                     Debug.Log("Incorrect stat update in MinerBB, value requested: " + _stat);
@@ -105,6 +109,8 @@ namespace blackboard
                     return sleepDesire;
                 case 5: //Rent
                     return rent;
+                case 6: //Rent Payment
+                    return rentPayed;
                 default: //Error Case
                     Debug.Log("Incorrect stat request in MinerBB, value requested: " + _stat);
                     break;
