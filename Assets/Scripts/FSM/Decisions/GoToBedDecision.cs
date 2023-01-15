@@ -24,6 +24,9 @@ namespace MyFSM
             if (n < stateMachine._blackboard.GetStat(4)){ //If numerator is less than sleep desire value then...
                 stateMachine._blackboard.UpdateDestination(2); //Updates miner destination to the home
                 stateMachine._blackboard.UpdateStat(6, 0); //Marks rent as unpayed
+
+                stateMachine._blackboard.UpdateCurrentThought("Going to Bed"); //Sets current miner thought
+
                 return true; //Return false to cease mining
             }
 

@@ -23,6 +23,7 @@ namespace MyFSM
             if (n < stateMachine._blackboard.GetStat(3))
             { //If numerator is less than banking desire value then...
                 stateMachine._blackboard.UpdateDestination(1); //Updates miner destination to the home
+                stateMachine._blackboard.UpdateCurrentThought("Heading to Bank"); //Sets current miner thought
                 return false; //Return false to cease mining
             }
 

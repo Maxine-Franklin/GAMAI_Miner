@@ -12,6 +12,12 @@ namespace blackboard
     public class Blackboard : MonoBehaviour
     {
         /// <summary>
+        /// Set current thought of AI
+        /// </summary>
+        /// <param name="newThought">The new thought overridng the old thought</param>
+        public virtual void UpdateCurrentThought(string newThought) { }
+
+        /// <summary>
         /// Add UI element to list of UI elements that the blackboard can edit
         /// </summary>
         /// <param name="_itemUI">UI element to be added to the list</param>

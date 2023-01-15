@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +12,8 @@ namespace blackboard
         //--Could use a void so that data is put in the BSM and the BSM runs the void to set the values of the UI and Locations
         [SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
         [SerializeField] private List<Transform> locations = new List<Transform>(); //All locations the miner can traval too
+
+        [SerializeField] private string thoughts = "Begining Process"; //Miner thoughts, used to represent what the miner is currently doing
 
         [SerializeField] private int minedGold = 0; //Gold that is yet to be banked
         [SerializeField] private int bankedGold = 0; //Gold that has been banked
@@ -26,6 +29,9 @@ namespace blackboard
         private int rentPayed = 0; //Tracks if rent has been payed to stop duplicate payments
 
         private Vector3 destination; //Miner destination
+
+        public override void UpdateCurrentThought(string newThought)
+        {   thoughts = newThought; return;  }
 
         public override void AddUIElement(TextMeshProUGUI _itemUI)
         {
@@ -145,6 +151,7 @@ namespace blackboard
             itemUI[4].text = "Sleeping Desire: " + sleepDesire.ToString(); //Updates sleeping desire UI element
             itemUI[5].enabled = overworked; //Enables overworked UI element visibility if miner is overworked
             itemUI[6].text = "Gold Lost: " + goldLost.ToString(); //Updates gold lost UI element
+            itemUI[7].text = thoughts; //Display of current miner thought
         }
     }
 }
