@@ -8,8 +8,6 @@ namespace FSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            Debug.Log("Hello World!");
-
             int goldMined = stateMachine._blackboard.GetStat(0); //Obtains Gold Mined
             int goldBanked = stateMachine._blackboard.GetStat(1); //Obtains Gold Banked
             int tiredness = stateMachine._blackboard.GetStat(2); //Obtains Tiredness
@@ -23,7 +21,7 @@ namespace FSM
             if (tiredness >= 7) //If tiredness is equal to or greater than 7 then...
                 overworked = 1; //Sets overworked to true
 
-            Debug.Log("goldMined: " + goldMined + "\ngoldBanked: " + goldBanked + "\ntiredness: " + tiredness + "\nrent: " + rent + "\nrentProximity: " + rentProximity + "\nbankDesire: " + Mathf.RoundToInt((goldMined + 0.5f) * 4f * (2.25f - rentProximity) - (1 + tiredness * 1.8f)));
+            //Debug.Log("goldMined: " + goldMined + "\ngoldBanked: " + goldBanked + "\ntiredness: " + tiredness + "\nrent: " + rent + "\nrentProximity: " + rentProximity + "\nbankDesire: " + Mathf.RoundToInt((goldMined + 0.5f) * 4f * (2.25f - rentProximity) - (1 + tiredness * 1.8f)));
 
             //Calculates and updates banking desire
             stateMachine._blackboard.UpdateStat(3, Mathf.RoundToInt((goldMined + 0.5f) * 4f * (2.25f - rentProximity) - (1 + tiredness* 1.8f)));

@@ -13,7 +13,7 @@ namespace FSM
 
         public void Execute(BaseStateMachine stateMachine)
         {
-            Debug.Log(Decision.Decide(stateMachine).ToString());
+            //Debug.Log(Decision.Decide(stateMachine).ToString());
             if (Decision.Decide(stateMachine) && !(trueState is RemainInState)) //If the decision is true and the true state is not the remain state...
                 stateMachine.currentState = trueState; //Transitions to the true state condition
             else if (!(falseState is RemainInState)) //If the decision is false and the false state is not the remain state...
