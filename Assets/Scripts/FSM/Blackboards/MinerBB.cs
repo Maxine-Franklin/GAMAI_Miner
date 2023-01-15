@@ -17,6 +17,7 @@ namespace blackboard
         [SerializeField] private int tiredness = 0; //Miner tiredness level
 
         private bool overworked = false; //Tracks if miner has become overworked
+        private int goldLost = 0; //Tracks gold lost due to being overworked
 
         private int bankingDesire = 0; //Desire to go to the bank and store mined gold
         private int sleepDesire = 0; //Desire to go home and restore tiredness (costs rent)
@@ -86,6 +87,9 @@ namespace blackboard
                 case 4: //Sleeping Desire
                     sleepDesire = incrementValue;
                     break;
+                case 5: //Gold Lost
+                    goldLost = incrementValue;
+                    break;
                 default: //Error Case
                     Debug.Log("Incorrect stat update in MinerBB, value requested: " + _stat);
                     break;
@@ -111,6 +115,11 @@ namespace blackboard
                     return rent;
                 case 6: //Rent Payment
                     return rentPayed;
+                case 7: //Overworked
+                    if (overworked) //If overworked then...
+                        return 1; //Return true
+                    else //If not overworked then...
+                        return 0; //Return false
                 default: //Error Case
                     Debug.Log("Incorrect stat request in MinerBB, value requested: " + _stat);
                     break;
@@ -135,6 +144,7 @@ namespace blackboard
             itemUI[3].text = "Banking Desire: " + bankingDesire.ToString(); //Updates banking desire UI element
             itemUI[4].text = "Sleeping Desire: " + sleepDesire.ToString(); //Updates sleeping desire UI element
             itemUI[5].enabled = overworked; //Enables overworked UI element visibility if miner is overworked
+            itemUI[6].text = "Gold Lost: " + goldLost.ToString(); //Updates gold lost UI element
         }
     }
 }

@@ -19,8 +19,8 @@ namespace MyFSM
                 return true; //Return false to cease mining
             }*/
 
-            int n = Random.Range(0, 100); //Generates a random numerator between 0-100
-            Debug.Log(" n Bed: " + n);
+            int n = Random.Range(0, 101); //Generates a random numerator between 0-100
+            Debug.Log(" n Bed: " + n); //Outputs the numerator value to debug log for debugging purposes
             if (n < stateMachine._blackboard.GetStat(4)){ //If numerator is less than sleep desire value then...
                 stateMachine._blackboard.UpdateDestination(2); //Updates miner destination to the home
                 stateMachine._blackboard.UpdateStat(6, 0); //Marks rent as unpayed

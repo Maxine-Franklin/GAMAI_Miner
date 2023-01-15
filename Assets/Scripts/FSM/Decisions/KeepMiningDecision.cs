@@ -18,7 +18,7 @@ namespace MyFSM
                 return false; //Return false to cease mining
             }*/
 
-            int n = Random.Range(0, 100); //Generates a random numerator between 0-100
+            int n = Random.Range(0, 101); //Generates a random numerator between 0-100
             Debug.Log("n Bank: " + n); //Outputs the numerator value to debug log for debugging purposes
             if (n < stateMachine._blackboard.GetStat(3))
             { //If numerator is less than banking desire value then...
