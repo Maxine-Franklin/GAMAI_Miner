@@ -19,6 +19,7 @@ namespace blackboard
         [SerializeField] private readonly int autominerCost = 12; //Cost per autominer purchased
         [SerializeField] private readonly int autobankerCost = 18; //Cost per autobanker purchased
         [SerializeField] private int[] breakdownChance = new int[1]; //Chance of automaton breaking down (autominer, autobanker)
+        private readonly int repairCost = 2; //Cost to repair a broken down automaton
         //private bool brokenDown = false; Reserved for personal blackboards
         private int goldLost = 0; //Tracks gold lost in mining
         private int breakdowns = 0; //List of how many automatons are suffering from a breakdown
@@ -96,7 +97,7 @@ namespace blackboard
         /// <summary>
         /// Obtain a specified stat's value
         /// </summary>
-        /// <param name="_stat"><br>0: Automined Gold</br><br>1: Automine Chance</br><br>2: Gold in Transit</br><br>3: Breakdown Chance (Miner)</br><br>4: Breakdown Chance (Banker)</br><br>5: Automaton Gold Lost</br><br>6: Autominer Cost</br><br>7: Autobanker Cost</br></param>
+        /// <param name="_stat"><br>0: Automined Gold</br><br>1: Automine Chance</br><br>2: Gold in Transit</br><br>3: Breakdown Chance (Miner)</br><br>4: Breakdown Chance (Banker)</br><br>5: Automaton Gold Lost</br><br>6: Autominer Cost</br><br>7: Autobanker Cost</br><br>8: Repair Cost</br></param>
         /// <returns><br>The integer value of a stat</br><br>If value is 999, an error has occured</br></returns>
         public override int GetStat(int _stat)
         {
@@ -118,6 +119,8 @@ namespace blackboard
                     return autominerCost;
                 case 7: //Autobanker cost
                     return autobankerCost;
+                case 8: //Repair Cost
+                    return repairCost;
                 /*case 6: //Overworked
                     if (brokenDown) //If overworked then...
                         return 1; //Return true
@@ -141,8 +144,8 @@ namespace blackboard
         {
             itemUI[0].text = "Automaton Mined Gold: " + autoMinedGold.ToString(); //Updates auto mined gold UI element
             itemUI[1].text = "Gold in Transit: " + goldInTransit.ToString(); //Updates gold in transit UI element
-            itemUI[2].text = "Automaton Gold Lost: " + goldLost.ToString();
-            itemUI[2].text = "Current Breakdowns: " + breakdowns.ToString(); //Updates breakdown count UI element
+            itemUI[2].text = "Automaton Gold Lost: " + goldLost.ToString(); //Updates gold lost when mining
+            itemUI[3].text = "Current Breakdowns: " + breakdowns.ToString(); //Updates breakdown count UI element
         }
     }
 }
