@@ -19,7 +19,7 @@ namespace MyFSM
             }*/
 
             int n = Random.Range(0, 101); //Generates a random numerator between 0-100
-            Debug.Log("n Bank: " + n); //Outputs the numerator value to debug log for debugging purposes
+            //Debug.Log("n Bank: " + n); //Outputs the numerator value to debug log for debugging purposes
             if (n < stateMachine._blackboard.GetStat(3))
             { //If numerator is less than banking desire value then...
                 stateMachine._blackboard.UpdateDestination(1); //Updates miner destination to the home

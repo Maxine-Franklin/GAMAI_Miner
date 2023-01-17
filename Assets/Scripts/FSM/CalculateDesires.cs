@@ -30,6 +30,17 @@ namespace FSM
             
             stateMachine._blackboard.UpdateStat(5, overworked); //Updates overworked status
 
+            int _aGold = stateMachine._blackboard._GetStat(0); //Obtains automaton mined gold count
+            int _aMinerCount = stateMachine._blackboard._GetStat(9); //Obtains autominer count
+            int _aBankCount = stateMachine._blackboard._GetStat(10); //Obtains autobanker count
+            int _breakDowns = stateMachine._blackboard._GetStat(11); //Obtains total current breakdown count
+
+            //Calculates and updates unloading desire
+            stateMachine._blackboard.UpdateStat(7, Mathf.RoundToInt(_aGold * 4f * (2 - (tiredness * 0.2f)) + (0.05f * (_aMinerCount * 10 - _aBankCount))));
+
+            //Calculates and updates repair desire
+            stateMachine._blackboard.UpdateStat(8, Mathf.RoundToInt(_breakDowns * 8f * (2f - (_aMinerCount + _aBankCount) * 0.2f)));
+
             return; //Returns code execution to caller
         }
     }

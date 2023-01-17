@@ -16,15 +16,23 @@ namespace blackboard
         [SerializeField] private int autoMinedGold = 0; //Auto-mined gold that is yet to be banked
         [SerializeField] private int miningChance = 33; //Chance to mine gold per tick per miner
         [SerializeField] private int goldInTransit = 0; //Gold in transit from autominer to bank
+
         [SerializeField] private readonly int autominerCost = 12; //Cost per autominer purchased
         [SerializeField] private readonly int autobankerCost = 18; //Cost per autobanker purchased
+
+        private int[] automatonCount = new int[] { 0, 0 }; //Count of automatons (miner, banker)
+
         [SerializeField] private int[] breakdownChance = new int[1]; //Chance of automaton breaking down (autominer, autobanker)
         private readonly int repairCost = 2; //Cost to repair a broken down automaton
+        private List<IndividualAutomatonBB> automatonsBrokenDown = new List<IndividualAutomatonBB>(); //A list containing all broken down automatons
         //private bool brokenDown = false; Reserved for personal blackboards
         private int goldLost = 0; //Tracks gold lost in mining
         private int breakdowns = 0; //List of how many automatons are suffering from a breakdown
 
-        //private Vector3 autoDestination; //Reserved for personal blackboards
+        //[SerializeField] private List<Transform> locations = new List<Transform>(); //All locations the miner can traval too
+        //public List<Transform> _locations { get { return _locations; } } //Public getter for locations
+        //private Vector3 Destination; //Reserved for personal blackboards
+        //public Vector3 _Destination { get { return Destination; } } //Public getter for destination
 
         public override void AddUIElement(TextMeshProUGUI _itemUI)
         {
@@ -72,7 +80,7 @@ namespace blackboard
         /// <summary>
         /// Increment a stat by a inputted value
         /// </summary>
-        /// <param name="_stat"><br>0: Automined Gold</br><br>1: Gold in Transit</br><br>2: Gold Lost</br></param>
+        /// <param name="_stat"><br>0: Automined Gold</br><br>1: Gold in Transit</br><br>2: Gold Lost</br><br>3: Breakdowns</br></param>
         /// <param name="incrementValue">A positive or negative integer to incremenet the current value by</param>
         public override void IncrementStat(int _stat, int incrementValue)
         {
@@ -87,6 +95,15 @@ namespace blackboard
                 case 2: //Gold Lost
                     goldLost += incrementValue;
                     break;
+                case 3: //Breakdowns
+                    breakdowns += incrementValue;
+                    break;
+                case 4: //Autominer Count
+                    automatonCount[0] += incrementValue;
+                    break;
+                case 5: //Autobanker Count
+                    automatonCount[1] += incrementValue;
+                    break;
                 default: //Error Case
                     Debug.Log("Incorrect stat update in AutomatonBB, value requested: " + _stat);
                     break;
@@ -97,7 +114,7 @@ namespace blackboard
         /// <summary>
         /// Obtain a specified stat's value
         /// </summary>
-        /// <param name="_stat"><br>0: Automined Gold</br><br>1: Automine Chance</br><br>2: Gold in Transit</br><br>3: Breakdown Chance (Miner)</br><br>4: Breakdown Chance (Banker)</br><br>5: Automaton Gold Lost</br><br>6: Autominer Cost</br><br>7: Autobanker Cost</br><br>8: Repair Cost</br></param>
+        /// <param name="_stat"><br>0: Automined Gold</br><br>1: Automine Chance</br><br>2: Gold in Transit</br><br>3: Breakdown Chance (Miner)</br><br>4: Breakdown Chance (Banker)</br><br>5: Automaton Gold Lost</br><br>6: Autominer Cost</br><br>7: Autobanker Cost</br><br>8: Repair Cost</br><br>9: Autominer Count</br><br>10: Autobanker Count</br><br>11: Breakdowns</br></param>
         /// <returns><br>The integer value of a stat</br><br>If value is 999, an error has occured</br></returns>
         public override int GetStat(int _stat)
         {
@@ -121,6 +138,12 @@ namespace blackboard
                     return autobankerCost;
                 case 8: //Repair Cost
                     return repairCost;
+                case 9: //Autominer Count
+                    return automatonCount[0];
+                case 10: //Autobanker Count
+                    return automatonCount[1];
+                case 11: //Breakdowns
+                    return breakdowns;
                 /*case 6: //Overworked
                     if (brokenDown) //If overworked then...
                         return 1; //Return true
@@ -133,19 +156,34 @@ namespace blackboard
             return 999; //Error value to represent an incorrect _stat value
         }
 
-        /*public override void UpdateDestination(int newDestination)
-        { destination = locations[newDestination].position; return; }*/ //Reserved for personal blackboards
+        public override List<Transform> GetLocations() { return locations; }
 
-        /*public override Vector3 GetDestination()
-        {return destination;}*/ //Reserved for personal blackboards
+        public override void AddBrokenDownAutomaton(IndividualAutomatonBB newBreakdown)
+        {
+            automatonsBrokenDown.Add(newBreakdown); //Adds new broken down automaton to the bottom of the list of breakdowns
+            return;
+        }
+
+        public override IndividualAutomatonBB GetBrokenDownAutomaton()
+        {
+            return automatonsBrokenDown[0]; //Returns top automaton from the list of broken down automatons
+        }
+
+        public override void RemoveBrokenDownAutomaton(IndividualAutomatonBB target)
+        {
+            if (automatonsBrokenDown.Contains(target)) //If target is in the list of broken down automatons then...
+                automatonsBrokenDown.Remove(target); //Removes the top automaton from the list of broken down automatons
+        }
 
         // Update is called once per frame
         void Update()
         {
-            itemUI[0].text = "Automaton Mined Gold: " + autoMinedGold.ToString(); //Updates auto mined gold UI element
+            itemUI[0].text = "Automined Gold: " + autoMinedGold.ToString(); //Updates auto mined gold UI element
             itemUI[1].text = "Gold in Transit: " + goldInTransit.ToString(); //Updates gold in transit UI element
             itemUI[2].text = "Automaton Gold Lost: " + goldLost.ToString(); //Updates gold lost when mining
             itemUI[3].text = "Current Breakdowns: " + breakdowns.ToString(); //Updates breakdown count UI element
+            //if (breakdowns > 0)
+                //Debug.Log(automatonsBrokenDown[0].gameObject.name.ToString());
         }
     }
 }
