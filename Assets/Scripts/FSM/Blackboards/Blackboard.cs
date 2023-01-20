@@ -6,7 +6,7 @@ using UnityEngine;
 namespace blackboard
 {
     /// <summary>
-    /// The blackboard contains all the USEFUL data that is required for our Behaviour Tree.
+    /// The blackboard contains all the functions for the FSM
     /// Inherit from the blackboard to have agent specific data
     /// </summary>
     public class Blackboard : MonoBehaviour
@@ -21,7 +21,7 @@ namespace blackboard
         /// Add UI element to list of UI elements that the blackboard can edit
         /// </summary>
         /// <param name="_itemUI">UI element to be added to the list</param>
-        public virtual void AddUIElement(TextMeshProUGUI _itemUI) { } //Add UI Element to sub-blackboards
+        public virtual void AddUIElement(TextMeshProUGUI _itemUI) { }
 
         /// <summary>
         /// Set the value of a stat to a specific value

@@ -8,8 +8,6 @@ namespace FSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            //stateMachine.minedGold += 1; //Increases mined gold by one
-            //stateMachine.tiredness += 1; //Increases miner tiredness by one
             int x = 1; //Gold mined
             if (stateMachine._blackboard.GetStat(7) == 1) //If miner is overworked then...
                 x = Random.Range(0, 2); //50% chance that miner will mine gold

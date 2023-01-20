@@ -7,13 +7,12 @@ namespace FSM
     [CreateAssetMenu(menuName = "FSM/Transition")]
     public sealed class Transition : ScriptableObject
     {
-        public Decision Decision;
+        public Decision Decision; //A boolean decision
         public BaseState trueState; //A state to transition too if the decision is true
         public BaseState falseState; //A state to transition too if the decision is false
 
         public void Execute(BaseStateMachine stateMachine)
         {
-            //Debug.Log(Decision.Decide(stateMachine).ToString());
             if (Decision.Decide(stateMachine) && !(trueState is RemainInState)) //If the decision is true and the true state is not the remain state...
                 stateMachine.currentState = trueState; //Transitions to the true state condition
             else if (!(falseState is RemainInState)) //If the decision is false and the false state is not the remain state...

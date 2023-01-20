@@ -11,7 +11,7 @@ namespace blackboard
     {
         [SerializeField] private AutomatonBB AutomatonController; //Reference to automaton master blackboard
         private IndividualAutomatonBB brokenDownAutomaton; //Refernce to currently tracked broken down automaton
-        //--Could use a void so that data is put in the BSM and the BSM runs the void to set the values of the UI and Locations
+
         [SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
         [SerializeField] private List<Transform> locations = new List<Transform>(); //All locations the miner can traval too
 

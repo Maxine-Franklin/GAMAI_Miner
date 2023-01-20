@@ -7,8 +7,8 @@ namespace FSM
     [CreateAssetMenu(menuName = "FSM/State")]
     public class State : BaseState //Derived class from BaseState
     {
-        public List<FSMAction> Action = new List<FSMAction>();
-        public List<Transition> Transitions = new List<Transition>();
+        public List<FSMAction> Action = new List<FSMAction>(); //Actions taken on the current state
+        public List<Transition> Transitions = new List<Transition>(); //All related transitions between states
 
         public override void Execute(BaseStateMachine machine)
         {

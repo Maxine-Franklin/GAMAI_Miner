@@ -4881,7 +4881,7 @@ MonoBehaviour:
   autoMinedGold: 0
   miningChance: 33
   goldInTransit: 0
-  breakdownChance: 0f0000000f000000
+  breakdownChance: 1400000014000000
 --- !u!4 &2042268042
 Transform:
   m_ObjectHideFlags: 0

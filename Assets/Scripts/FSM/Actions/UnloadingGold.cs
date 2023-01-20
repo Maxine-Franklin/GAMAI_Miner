@@ -9,9 +9,8 @@ namespace FSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            //int x = 0; //Numerator to set a max amount of times the miner can unload during an unloading action
-            stateMachine._blackboard.IncrementStat(0, 3); //Increases mined gold by five
-            stateMachine._blackboard._IncrementStat(0, -3); //Decreases automined gold by five
+            stateMachine._blackboard.IncrementStat(0, 3); //Increases mined gold by three
+            stateMachine._blackboard._IncrementStat(0, -3); //Decreases automined gold by three
         }
     }
 }

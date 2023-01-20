@@ -1,3 +1,10 @@
+/*
+ * Title: Unity AI Development: A Finite-state Machine Tutorial
+ * Author: Garegin Tadevosyan
+ * Availability: https://www.toptal.com/unity-unity3d/unity-ai-development-finite-state-machine-tutorial
+ * Used as a learning tool for how to create the basics of an FSM system
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,8 +13,6 @@ using blackboard;
 using UnityEngine;
 using UnityEngine.UI;
 
-//Code built using https://www.toptal.com/unity-unity3d/unity-ai-development-finite-state-machine-tutorial for learning
-
 namespace FSM
 {
     public class BaseStateMachine : MonoBehaviour
@@ -15,21 +20,9 @@ namespace FSM
         [SerializeField] private BaseState _initialState;
         private Dictionary<Type, Component> _cachedComponents; //Stores cached components to increase effiency of state actions
 
-        //[SerializeField] private List<TextMeshProUGUI> itemUI = new List<TextMeshProUGUI>(); //UI element that shows the mined gold value
         [SerializeField] private List<Transform> locations = new List<Transform>(); //All locations the miner can traval too
 
         public Blackboard _blackboard;
-
-        //public int minedGold = 0; //Gold that is yet to be banked
-        //public int bankedGold = 0; //Gold that has been banked
-        //public int tiredness = 0; //Miner tiredness level
-        //public Vector3 destination //Miner destination
-        //{ get; set; }
-        /// <summary>
-        /// Updates the destination of the miner (used by navAgent)
-        /// </summary>
-        /// <param name="newDestination"><br>0: Mine</br><br>1: Bank</br><br>2: Home</br><br>3: Store</br></param>
-        //public void UpdateDestination(int newDestination) { destination = locations[newDestination].position; return; }
 
         private void Awake()
         {
@@ -68,22 +61,7 @@ namespace FSM
             {
                 timer = 0.5f; //Resets FSM execution timer to 500 milliseconds
                 currentState.Execute(this); //Executes current state
-                //itemUI[0].text = "Gold Mined: " + minedGold.ToString(); //Updates mined gold UI element
-                //itemUI[1].text = "Gold Banked: " + bankedGold.ToString(); //Updates banked gold UI element
-                //itemUI[2].text = "Tiredness: " + tiredness.ToString(); //Updates tiredness UI element
             }
         }
-
-        /*WaitForSeconds waitForSeconds = new WaitForSeconds(0.5f);
-
-        IEnumerator UpdateAI() //Calls AI execute functions every waitForSeconds seconds (currently 500 milliseconds)
-        {
-            while(true)
-            {
-                currentState.Execute(this);
-                _minedGold.text = "Gold Mined: " + minedGold.ToString();
-                yield return waitForSeconds;
-            }
-        }*/
     }
 }

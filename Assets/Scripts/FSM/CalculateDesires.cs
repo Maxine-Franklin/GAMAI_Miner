@@ -21,8 +21,6 @@ namespace FSM
             if (tiredness >= 7) //If tiredness is equal to or greater than 7 then...
                 overworked = 1; //Sets overworked to true
 
-            //Debug.Log("goldMined: " + goldMined + "\ngoldBanked: " + goldBanked + "\ntiredness: " + tiredness + "\nrent: " + rent + "\nrentProximity: " + rentProximity + "\nbankDesire: " + Mathf.RoundToInt((goldMined + 0.5f) * 4f * (2.25f - rentProximity) - (1 + tiredness * 1.8f)));
-
             //Calculates and updates banking desire
             stateMachine._blackboard.UpdateStat(3, Mathf.RoundToInt((goldMined + 0.5f) * 4f * (2.25f - rentProximity) - (1 + tiredness* 1.8f)));
             //Calculates and updates sleeping desire

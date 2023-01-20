@@ -7,8 +7,6 @@ namespace FSM
     {
         public override void Execute(BaseStateMachine stateMachine)
         {
-            //stateMachine.tiredness -= 1; //Decreases tiredness by 1
-
             stateMachine._blackboard.IncrementStat(2, -1); //Decreases tiredness by 1
         }
     }
